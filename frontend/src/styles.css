@@ -2,6 +2,9 @@
 @source "../src";
 @import "tw-animate-css";
 
+html {
+  scroll-behavior: smooth;
+}
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -141,4 +144,49 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+@layer components {
+  .form-input {
+    height: 3rem;
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+    background-color: white;
+    padding-inline: 1rem;
+    color: var(--color-foreground);
+    outline: none;
+    transition:
+      border-color 150ms ease,
+      box-shadow 150ms ease;
+  }
+
+  .form-input:focus {
+    border-color: oklch(0.623 0.214 259.815);
+    box-shadow: 0 0 0 4px oklch(0.932 0.032 255.585);
+  }
+}
+
+@keyframes notification-ring {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(16deg);
+  }
+  40% {
+    transform: rotate(-14deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(-6deg);
+  }
+}
+
+.notification-ring {
+  animation: notification-ring 0.8s ease-in-out infinite;
+  transform-origin: 50% 10%;
 }
